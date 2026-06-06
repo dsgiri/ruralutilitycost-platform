@@ -7,7 +7,8 @@ export function GoogleAnalytics() {
   const initRef = useRef(false);
 
   useEffect(() => {
-    const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+    // Use the specific Measurement ID from the Google Analytics dashboard
+    const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID || "G-RG4VV8TP1E";
     
     // Always call default consent before GA initialization as per Google guidelines
     const win = window as any;
@@ -45,7 +46,8 @@ export function GoogleAnalytics() {
   }, []);
 
   useEffect(() => {
-    if (initRef.current && import.meta.env.VITE_GA_MEASUREMENT_ID) {
+    const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID || "G-RG4VV8TP1E";
+    if (initRef.current && measurementId) {
       ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
     }
   }, [location]);
