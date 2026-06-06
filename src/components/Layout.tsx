@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, Home as HomeIcon, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap } from 'lucide-react';
+import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, Home as HomeIcon, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap, ShieldCheck, Map, Leaf } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { Logo } from './Logo';
 import { A11yControls } from './A11yControls';
 
@@ -9,6 +9,7 @@ const navCategories = [
   {
     title: "Property & Construction",
     items: [
+      { path: '/rural-land', label: 'Rural Land Value', icon: Map },
       { path: '/septic', label: 'Septic Tank Size', icon: LayoutGrid },
       { path: '/fill-dirt', label: 'Fill Dirt Cost', icon: Shovel },
       { path: '/gravel', label: 'Gravel Cost', icon: Trees },
@@ -30,6 +31,7 @@ const navCategories = [
   {
     title: "Animal & Farm",
     items: [
+      { path: '/habitat-cost', label: 'Habitat Builder', icon: Leaf },
       { path: '/livestock', label: 'Livestock Water', icon: PawPrint },
       { path: '/gestation', label: 'Animal Gestation', icon: CalendarHeart },
       { path: '/incubation', label: 'Egg Incubation', icon: Bird },
@@ -40,6 +42,7 @@ const navCategories = [
     items: [
       { path: '/cut-cost', label: 'Cut Cost', icon: Scissors },
       { path: '/expand-profit', label: 'Expand Profit', icon: TrendingUp },
+      { path: '/compliance', label: 'Processing & Compliance', icon: ShieldCheck },
     ]
   },
   {
@@ -57,6 +60,15 @@ const navItems = [
 
 export function Layout({ children }: { children: ReactNode }) {
   const location = useLocation();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredCategories = navCategories.map(cat => ({
+    ...cat,
+    items: cat.items.filter(item => 
+      item.label.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      cat.title.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  })).filter(cat => cat.items.length > 0);
 
   return (
     <div className="flex flex-col md:flex-row h-screen w-full overflow-hidden bg-gray-50 font-sans print:h-auto print:overflow-visible print:bg-white">
@@ -70,14 +82,31 @@ export function Layout({ children }: { children: ReactNode }) {
             <span className="text-green-400/80 ml-0.5">$</span>
           </h1>
         </div>
+        
+        <div className="px-4 py-3 border-b border-white/10">
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-2.5 flex items-center pointer-events-none">
+              <Search className="h-4 w-4 text-white/50" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search tools..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-9 pr-3 py-2 bg-black/20 border border-white/10 rounded-lg text-sm text-white placeholder-white/50 focus:outline-none focus:ring-1 focus:ring-green-400 focus:border-green-400 transition-colors"
+            />
+          </div>
+        </div>
+
         <div className="flex-grow py-4 overflow-y-auto">
           <ul className="space-y-1">
             <li>
               <Link
                 to="/"
+                onClick={() => setSearchQuery('')}
                 className={cn(
                   'px-6 py-3 flex items-center gap-3 cursor-pointer transition-all',
-                  location.pathname === '/'
+                  location.pathname === '/' && searchQuery === ''
                     ? 'bg-white/20 border-l-4 border-green-300 opacity-100 font-bold'
                     : 'hover:bg-white/5 opacity-80 hover:opacity-100 border-l-4 border-transparent font-medium'
                 )}
@@ -86,35 +115,42 @@ export function Layout({ children }: { children: ReactNode }) {
                 <span className="text-sm tracking-wide">Home Dashboard</span>
               </Link>
             </li>
-            {navCategories.map((category) => (
-              <li key={category.title} className="pt-4">
-                <div className="px-6 pb-2 text-xs font-bold text-green-300/70 uppercase tracking-wider">
-                  {category.title}
-                </div>
-                <ul className="space-y-1">
-                  {category.items.map((item) => {
-                    const Icon = item.icon;
-                    const isActive = location.pathname === item.path;
-                    return (
-                      <li key={item.path}>
-                        <Link
-                          to={item.path}
-                          className={cn(
-                            'px-6 py-2.5 flex items-center gap-3 cursor-pointer transition-all',
-                            isActive
-                              ? 'bg-white/20 border-l-4 border-green-300 opacity-100 font-bold text-white'
-                              : 'hover:bg-white/5 opacity-80 hover:opacity-100 border-l-4 border-transparent font-medium text-white/90'
-                          )}
-                        >
-                          <Icon className="w-4 h-4" />
-                          <span className="text-sm tracking-wide">{item.label}</span>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
+            
+            {filteredCategories.length === 0 && searchQuery !== '' ? (
+              <li className="px-6 py-4 text-sm text-white/60 text-center italic">
+                No tools found
               </li>
-            ))}
+            ) : (
+              filteredCategories.map((category) => (
+                <li key={category.title} className="pt-4">
+                  <div className="px-6 pb-2 text-xs font-bold text-green-300/70 uppercase tracking-wider">
+                    {category.title}
+                  </div>
+                  <ul className="space-y-1">
+                    {category.items.map((item) => {
+                      const Icon = item.icon;
+                      const isActive = location.pathname === item.path;
+                      return (
+                        <li key={item.path}>
+                          <Link
+                            to={item.path}
+                            className={cn(
+                              'px-6 py-2.5 flex items-center gap-3 cursor-pointer transition-all',
+                              isActive
+                                ? 'bg-white/20 border-l-4 border-green-300 opacity-100 font-bold text-white'
+                                : 'hover:bg-white/5 opacity-80 hover:opacity-100 border-l-4 border-transparent font-medium text-white/90'
+                            )}
+                          >
+                            <Icon className="w-4 h-4" />
+                            <span className="text-sm tracking-wide">{item.label}</span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </li>
+              ))
+            )}
           </ul>
         </div>
       </nav>

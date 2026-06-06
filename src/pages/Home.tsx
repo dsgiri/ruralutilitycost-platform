@@ -1,12 +1,23 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, ArrowRight, CheckCircle2, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap } from 'lucide-react';
+import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, ArrowRight, CheckCircle2, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap, ShieldCheck, Map, Leaf } from 'lucide-react';
 
 const calculatorCategories = [
   {
     title: "Property & Construction",
     desc: "Building, land prep, site work",
     items: [
+      {
+        path: '/rural-land',
+        title: 'Rural Land Value',
+        desc: 'Estimate selling proceeds or evaluate a parcel\'s suitability score for buying.',
+        icon: Map,
+        features: ['Net Proceeds Est.', 'Buyer Suitability Score', 'Cost to improve', 'Red flag analysis'],
+        color: 'text-teal-600',
+        bg: 'bg-teal-50',
+        border: 'border-teal-100',
+      },
       {
         path: '/septic',
         title: 'Septic Tank Size',
@@ -126,9 +137,19 @@ const calculatorCategories = [
     ]
   },
   {
-    title: "Animal & Farm",
-    desc: "Livestock, breeding, poultry",
+    title: "Agriculture & Habitat",
+    desc: "Habitats, livestock, breeding, poultry",
     items: [
+      {
+        path: '/habitat-cost',
+        title: 'Habitat Restoration Cost',
+        desc: 'Estimate site prep, seed, planting, and protection costs for converting acreage to native habitat.',
+        icon: Leaf,
+        features: ['Pollinator & Forest presets', 'Site prep included', 'Tree protection costs', 'NRCS Grant context'],
+        color: 'text-emerald-600',
+        bg: 'bg-emerald-50',
+        border: 'border-emerald-100',
+      },
       {
         path: '/livestock',
         title: 'Livestock Water',
@@ -184,6 +205,16 @@ const calculatorCategories = [
         color: 'text-fuchsia-600',
         bg: 'bg-fuchsia-50',
         border: 'border-fuchsia-100',
+      },
+      {
+        path: '/compliance',
+        title: 'Food Processing Compliance',
+        desc: 'Estimate organic certification costs, calculate organic label %, and assess FDA inspection readiness.',
+        icon: ShieldCheck,
+        features: ['Organic Cert Fee Est.', 'Label % Calculator', 'Exclude water/salt rules', 'FDA Readiness Score'],
+        color: 'text-sky-600',
+        bg: 'bg-sky-50',
+        border: 'border-sky-100',
       }
     ]
   },
@@ -211,6 +242,17 @@ const calculatorCategories = [
 ];
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredCategories = calculatorCategories.map(cat => ({
+    ...cat,
+    items: cat.items.filter(item => 
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      item.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.features.some(f => f.toLowerCase().includes(searchQuery.toLowerCase()))
+    )
+  })).filter(cat => cat.items.length > 0);
+
   return (
     <div className="flex flex-col w-full h-full">
       <SEO 
@@ -225,32 +267,43 @@ export default function Home() {
         }}
       />
       
-      {/* HERO SECTION */}
-      <section className="bg-gradient-to-br from-[#1a5f3f] to-[#144a30] text-white py-10 px-6 sm:px-12 text-center rounded-b-3xl shadow-lg relative overflow-hidden flex-shrink-0">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 tracking-tight max-w-3xl mx-auto leading-tight">Calculate Rural<br className="sm:hidden" /> Utility Costs.</h1>
-          <p className="text-base sm:text-lg text-green-100 max-w-2xl mx-auto mb-6 font-medium">
-            Stop guessing. Get accurate, data-driven estimates for land development, homesteading, and off-grid rural living.
-          </p>
-          <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-sm font-medium border border-white/20 backdrop-blur-sm shadow-inner">
-            <CheckCircle2 className="w-4 h-4 text-green-300" /> updated with 2026 industry averages
-          </div>
-        </div>
-      </section>
-
-      {/* CALCULATOR GRID */}
+      {/* CALCULATOR GRID & UTILITY SEARCH (COMMAND CENTER) */}
       <section className="px-4 py-8 max-w-7xl mx-auto w-full flex-grow">
-        <div className="text-center mb-12">
-          <p className="text-xs font-bold text-[#1a5f3f] uppercase tracking-wider mb-3">Start Here</p>
-          <h2 className="text-3xl font-bold text-gray-900 uppercase tracking-tight">Our Calculation Tools</h2>
-          <div className="h-1 w-16 bg-[#1a5f3f] mx-auto mt-4 rounded-full"></div>
+        <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex-1">
+            <h1 className="text-3xl md:text-4xl font-black text-gray-900 uppercase tracking-tight mb-2">Calculation Tools</h1>
+            <p className="text-gray-500 font-medium tracking-wide">Select a utility to start calculating, or search for a specific tool.</p>
+          </div>
+          
+          <div className="w-full md:w-[400px] relative shadow-sm shrink-0">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <Search className="h-5 w-5 text-gray-400" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search tools, features, keywords..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="block w-full pl-11 pr-4 py-3.5 border-gray-200 rounded-xl focus:ring-[#1a5f3f] focus:border-[#1a5f3f] text-gray-900 placeholder-gray-400 text-base shadow-sm bg-white"
+            />
+          </div>
         </div>
 
         <div className="space-y-16">
-          {calculatorCategories.map((category, catIdx) => {
-            if (category.items.length === 0) return null;
-            return (
+          {filteredCategories.length === 0 ? (
+            <div className="text-center text-gray-500 py-12">
+              <p className="text-lg">No calculators found matching "{searchQuery}"</p>
+              <button 
+                onClick={() => setSearchQuery('')}
+                className="mt-4 text-[#1a5f3f] hover:underline font-medium"
+              >
+                Clear search
+              </button>
+            </div>
+          ) : (
+            filteredCategories.map((category, catIdx) => {
+              if (category.items.length === 0) return null;
+              return (
               <div key={catIdx} className="space-y-6">
                 <div className="border-b border-gray-200 pb-3">
                   <h3 className="text-2xl font-bold text-gray-900">{category.title}</h3>
@@ -292,7 +345,8 @@ export default function Home() {
                 </div>
               </div>
             );
-          })}
+            })
+          )}
         </div>
       </section>
       
