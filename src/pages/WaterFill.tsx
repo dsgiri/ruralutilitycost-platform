@@ -23,7 +23,7 @@ export default function WaterFill() {
     const waterCost = gallons * rate;
     const total = waterCost + delivery;
     const loads = Math.ceil(gallons / 4000);
-    const costPerGal = total / gallons;
+    const costPerGal = gallons > 0 ? (total / gallons) : 0;
 
     // 12 month data projection
     const chartData = Array.from({ length: 12 }).map((_, i) => ({
