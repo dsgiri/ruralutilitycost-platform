@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, ArrowRight, CheckCircle2, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap, ShieldCheck, Map, Leaf, Hexagon, Beaker, Scale, Tag, Package } from 'lucide-react';
+import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, ArrowRight, CheckCircle2, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap, ShieldCheck, Map, Leaf, Hexagon, Beaker, Scale, Tag, Package, Clock, ZapOff } from 'lucide-react';
 
 const calculatorCategories = [
   {
@@ -85,6 +85,36 @@ const calculatorCategories = [
         color: 'text-violet-600',
         bg: 'bg-violet-50',
         border: 'border-violet-100',
+      },
+      {
+        path: '/gen-runtime',
+        title: 'Generator Runtime',
+        desc: 'Estimate how long your generator can run on available fuel. Plan for power outages.',
+        icon: Clock,
+        features: ['Diesel/Propane/Gas', 'Load-adjusted burns', 'Hours & Days output'],
+        color: 'text-sky-600',
+        bg: 'bg-sky-50',
+        border: 'border-sky-100',
+      },
+      {
+        path: '/gen-fuel-cost',
+        title: 'Fuel Consumption & Cost',
+        desc: 'Calculate estimated fuel usage and operating costs for backup generators.',
+        icon: Flame,
+        features: ['Gallons per hour', 'Total fuel cost', '24-hour rate'],
+        color: 'text-orange-500',
+        bg: 'bg-orange-50',
+        border: 'border-orange-100',
+      },
+      {
+        path: '/gen-critical-load',
+        title: 'Critical Load Backup',
+        desc: 'Determine if your current fuel reserve will support your mission-critical loads for your target duration.',
+        icon: ZapOff,
+        features: ['Capacity checking', 'Target shortfalls', 'Idle compensation'],
+        color: 'text-indigo-600',
+        bg: 'bg-indigo-50',
+        border: 'border-indigo-100',
       },
       {
         path: '/water-fill',
@@ -308,6 +338,16 @@ const calculatorCategories = [
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [recentPaths, setRecentPaths] = useState<string[]>([]);
+
+  useEffect(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem('recentlyUsedCalcs') || '[]');
+      setRecentPaths(stored);
+    } catch (e) {
+      console.error('Failed to parse recently used calculators', e);
+    }
+  }, []);
 
   const filteredCategories = calculatorCategories.map(cat => ({
     ...cat,
@@ -317,6 +357,9 @@ export default function Home() {
       item.features.some(f => f.toLowerCase().includes(searchQuery.toLowerCase()))
     )
   })).filter(cat => cat.items.length > 0);
+
+  const allItems = calculatorCategories.flatMap(c => c.items);
+  const recentItems = recentPaths.map(path => allItems.find(i => i.path === path)).filter(Boolean);
 
   return (
     <div className="flex flex-col w-full h-full">
@@ -355,6 +398,49 @@ export default function Home() {
             />
           </div>
         </div>
+
+        {/* RECENTLY USED CAROUSEL */}
+        {recentItems.length > 0 && !searchQuery && (
+          <div className="mb-12">
+            <h2 className="text-xl font-bold text-gray-900 mb-5 flex items-center gap-2">
+              <Clock className="w-5 h-5 text-gray-500" />
+              Recently Used
+            </h2>
+            <div 
+              className="flex overflow-x-auto pb-4 gap-4 snap-x hide-scrollbar"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {recentItems.map((calc, idx) => {
+                if (!calc) return null;
+                const Icon = calc.icon;
+                return (
+                  <Link 
+                    key={idx} 
+                    to={calc.path} 
+                    className="flex-shrink-0 w-[280px] sm:w-[320px] group bg-white rounded-2xl shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300 block snap-start"
+                  >
+                    <div className={`p-5 rounded-2xl border-b ${calc.border} flex items-start gap-4 transition-colors duration-300 group-hover:${calc.bg}`}>
+                      <div className={`p-2.5 rounded-xl bg-white shadow-sm border ${calc.border} flex-shrink-0`}>
+                        <Icon className={`w-6 h-6 ${calc.color}`} />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-base text-gray-900 group-hover:text-[#1a5f3f] transition-colors line-clamp-1">{calc.title}</h3>
+                        <p className="text-xs text-gray-500 mt-1 line-clamp-2 leading-relaxed">{calc.desc}</p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            <style>
+              {`
+                .hide-scrollbar::-webkit-scrollbar {
+                  display: none;
+                }
+              `}
+            </style>
+          </div>
+        )}
 
         <div className="space-y-16">
           {filteredCategories.length === 0 ? (

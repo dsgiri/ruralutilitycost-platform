@@ -36,6 +36,9 @@ import SyrupMix from './pages/SyrupMix';
 import MeatYield from './pages/MeatYield';
 import MeatProcessing from './pages/MeatProcessing';
 import MeatCostPerLb from './pages/MeatCostPerLb';
+import GenRuntime from './pages/GenRuntime';
+import GenFuelCost from './pages/GenFuelCost';
+import GenCriticalLoad from './pages/GenCriticalLoad';
 
 export default function App() {
   return (
@@ -64,6 +67,9 @@ export default function App() {
           <Route path="/meat-yield" element={<MeatYield />} />
           <Route path="/meat-processing" element={<MeatProcessing />} />
           <Route path="/meat-cost-per-lb" element={<MeatCostPerLb />} />
+          <Route path="/gen-runtime" element={<GenRuntime />} />
+          <Route path="/gen-fuel-cost" element={<GenFuelCost />} />
+          <Route path="/gen-critical-load" element={<GenCriticalLoad />} />
           <Route path="/energy-demand" element={<EnergyDemand />} />
           <Route path="/gestation" element={<Gestation />} />
           <Route path="/incubation" element={<Incubation />} />

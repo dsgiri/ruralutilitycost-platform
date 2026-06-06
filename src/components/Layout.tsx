@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, Home as HomeIcon, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap, ShieldCheck, Map, Leaf, Hexagon, Beaker, Scale, Tag, Package, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, Home as HomeIcon, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap, ShieldCheck, Map, Leaf, Hexagon, Beaker, Scale, Tag, Package, Menu, ChevronLeft, ChevronRight, Clock, ZapOff } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { A11yControls } from './A11yControls';
 
@@ -29,6 +29,9 @@ const navCategories = [
     title: "Energy & Utilities",
     items: [
       { path: '/energy-demand', label: 'Peak Energy Demand', icon: Zap, tooltip: 'Calculate maximum electrical load for off-grid or backup' },
+      { path: '/gen-runtime', label: 'Generator Runtime', icon: Clock, tooltip: 'Estimate how long your generator will run on available fuel' },
+      { path: '/gen-fuel-cost', label: 'Fuel Consumption', icon: Flame, tooltip: 'Calculate estimated fuel usage and operating costs for backup generators' },
+      { path: '/gen-critical-load', label: 'Critical Load Backup', icon: ZapOff, tooltip: 'Check if you have enough fuel for essential appliances' },
       { path: '/water-fill', label: 'Water Fill Charge', icon: Droplet, tooltip: 'Estimate cost for bulk water delivery' },
       { path: '/propane', label: 'Propane Refill', icon: Flame, tooltip: 'Estimate heating fuel and propane costs' },
       { path: '/solar', label: 'Off-Grid Solar', icon: Sun, tooltip: 'Calculate solar panel and battery requirements' },
@@ -85,6 +88,19 @@ export function Layout({ children }: { children: ReactNode }) {
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  useEffect(() => {
+    const path = location.pathname;
+    if (path !== '/' && path !== '/contact' && path !== '/termsofservice' && path !== '/privacypolicy') {
+      try {
+        const recent = JSON.parse(localStorage.getItem('recentlyUsedCalcs') || '[]');
+        const updated = [path, ...recent.filter((p: string) => p !== path)].slice(0, 10);
+        localStorage.setItem('recentlyUsedCalcs', JSON.stringify(updated));
+      } catch (e) {
+        console.error('Failed to save recently used path', e);
+      }
+    }
+  }, [location.pathname]);
 
   const filteredCategories = navCategories.map(cat => ({
     ...cat,

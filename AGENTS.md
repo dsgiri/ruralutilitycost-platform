@@ -78,6 +78,19 @@ Use the existing style unless explicitly asked to change it.
 - Keep the initial experience lightweight.
 - Defer non-critical enhancements until core functionality is done.
 
+## NEW CALCULATOR ONBOARDING: REGISTRY & STANDARDS (CRITICAL)
+**CRITICAL RULE: NEVER START CODING A NEW CALCULATOR IMMEDIATELY.**
+Before writing *any* code for a new calculator or generating any files, you MUST sequentially:
+
+1. **Verify the Registry:** Check `/docs/CALCULATOR_REGISTRY.md` to see if the requested calculator (or a highly similar one) already exists.
+2. **Verify Fitment via the Standard:** Check `/docs/Calculator-Standard.md` to ensure the new requested idea passes the site's fitment criteria, priority scoring, and out-of-scope risk checks.
+3. **Alert and Ask Questions (DO NOT CODE):** Alert the user (administrator/coder) with your findings:
+   - If there is a duplicate or overlap, point out the existing `CALC-XXX` module.
+   - If it violates or barely passes the Calculator Standard, point out why.
+   - Ask clarifying questions about missing inputs, math, or UX flow.
+4. **Wait for Approval:** Do NOT generate any functional code until the user explicitly confirms it is safe to proceed or directs you to update an existing module instead.
+5. **Update the Registry Safely:** ONLY after it is approved and successfully built, generate a new unique tracking code (e.g., `CALC-XXX-###`) and update `/docs/CALCULATOR_REGISTRY.md` with its description, inputs, calculations, and functionality so that the registry remains the definitive system-of-record.
+
 ## WHEN BUILDING CALCULATORS
 If the task involves a calculator:
 - Make the inputs understandable to non-technical users.
