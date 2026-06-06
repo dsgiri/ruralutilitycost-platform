@@ -54,7 +54,7 @@ const navCategories = [
 ];
 
 const navItems = [
-  { path: '/', label: 'Home Dashboard', icon: HomeIcon },
+  { path: '/', label: 'Home', icon: HomeIcon },
   ...navCategories.flatMap(c => c.items)
 ];
 
@@ -74,13 +74,15 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="flex flex-col md:flex-row h-screen w-full overflow-hidden bg-gray-50 font-sans print:h-auto print:overflow-visible print:bg-white">
       {/* SIDEBAR NAVIGATION (Desktop) */}
       <nav className="w-60 bg-[#1a5f3f] text-white flex-shrink-0 hidden md:flex flex-col print:hidden">
-        <div className="p-6 border-b border-white/10 flex items-center gap-3">
-          <Logo className="w-10 h-10 text-white" />
-          <h1 className="text-xl font-bold leading-tight">
-            Rural Utility<br/>
-            <span className="text-green-300">Cost</span>
-            <span className="text-green-400/80 ml-0.5">$</span>
-          </h1>
+        <div className="border-b border-white/10">
+          <Link to="/" onClick={() => setSearchQuery('')} className="p-6 flex items-center gap-3 hover:bg-white/5 transition-colors cursor-pointer">
+            <Logo className="w-10 h-10 text-white" />
+            <h1 className="text-xl font-bold leading-tight">
+              Rural Utility<br/>
+              <span className="text-green-300">Cost</span>
+              <span className="text-green-400/80 ml-0.5">$</span>
+            </h1>
+          </Link>
         </div>
         
         <div className="px-4 py-3 border-b border-white/10">
@@ -100,22 +102,6 @@ export function Layout({ children }: { children: ReactNode }) {
 
         <div className="flex-grow py-4 overflow-y-auto">
           <ul className="space-y-1">
-            <li>
-              <Link
-                to="/"
-                onClick={() => setSearchQuery('')}
-                className={cn(
-                  'px-6 py-3 flex items-center gap-3 cursor-pointer transition-all',
-                  location.pathname === '/' && searchQuery === ''
-                    ? 'bg-white/20 border-l-4 border-green-300 opacity-100 font-bold'
-                    : 'hover:bg-white/5 opacity-80 hover:opacity-100 border-l-4 border-transparent font-medium'
-                )}
-              >
-                <HomeIcon className="w-4 h-4" />
-                <span className="text-sm tracking-wide">Home Dashboard</span>
-              </Link>
-            </li>
-            
             {filteredCategories.length === 0 && searchQuery !== '' ? (
               <li className="px-6 py-4 text-sm text-white/60 text-center italic">
                 No tools found
