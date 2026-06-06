@@ -47,6 +47,7 @@ const navCategories = [
     categoryIcon: PawPrint,
     title: "Animal & Farm",
     items: [
+      { path: '/livestock-age', label: 'Livestock Age Estimator', icon: PawPrint, tooltip: 'Estimate the approximate age of cattle based on teeth' },
       { path: '/meat-yield', label: 'Take-Home Meat Yield', icon: Scale, tooltip: 'Estimate packaged meat from live or hanging weight' },
       { path: '/meat-processing', label: 'Processing Cost', icon: Scissors, tooltip: 'Estimate butcher fees and cut/wrap costs' },
       { path: '/meat-cost-per-lb', label: 'Cost Per Pound', icon: Tag, tooltip: 'Find out your true break-even cost per pound' },
@@ -65,7 +66,6 @@ const navCategories = [
     categoryIcon: TrendingUp,
     title: "Business & Profit",
     items: [
-      { path: '/grant-readiness', label: 'Grant Match & Readiness', icon: Landmark, tooltip: 'Calculate cash match and bridge funding' },
       { path: '/pain-point-priority', label: 'Pain Point Priority', icon: AlertOctagon, tooltip: 'Rank your biggest rural problems by severity to know what to fix first' },
       { path: '/cut-cost', label: 'Cut Cost', icon: Scissors, tooltip: 'Find areas to reduce operational overhead' },
       { path: '/expand-profit', label: 'Expand Profit', icon: TrendingUp, tooltip: 'Find out how to increase margins' },
@@ -78,6 +78,7 @@ const navCategories = [
     categoryIcon: Banknote,
     title: "Government Aid & Grants",
     items: [
+      { path: '/grant-readiness', label: 'Grant Match & Readiness', icon: Landmark, tooltip: 'Calculate cash match and bridge funding' },
       { path: '/grant-finder', label: 'Grant Finder', icon: Search, tooltip: 'Search for USDA or state agriculture grants' },
     ]
   }
@@ -103,6 +104,12 @@ export function Layout({ children }: { children: ReactNode }) {
       } catch (e) {
         console.error('Failed to save recently used path', e);
       }
+      
+      // Auto-collapse sidebar to maximize calculator workspace
+      setIsSidebarCollapsed(true);
+    } else {
+      // Auto-expand sidebar on home page
+      setIsSidebarCollapsed(false);
     }
   }, [location.pathname]);
 

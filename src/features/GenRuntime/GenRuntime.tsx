@@ -40,18 +40,45 @@ export default function GenRuntime() {
     setCustomBurnRate(0.5);
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Generator Runtime Calculator",
+        "description": "Estimate how long your generator can run on available fuel. Plan for power outages and off-grid backup.",
+        "applicationCategory": "UtilitiesApplication"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How long will a 10 kW generator run on 20 gallons of fuel?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "At a 50% load, a 10 kW diesel generator burns roughly 0.45 gallons per hour (gal/h). With 20 gallons of fuel, it will run for approximately 44.4 hours. A gasoline generator burns slightly more, lasting about 30.3 hours on the same fuel amount."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What consumes the most generator fuel?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fuel consumption is directly tied to the electrical load (kW). Running high-draw appliances like well pumps, HVAC systems, or electric water heaters continuously will dramatically increase the fuel burn rate and reduce total runtime."
+            }
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
       <SEO 
         title="Generator Runtime Calculator | Rural Utility Cost"
         description="Estimate how long your generator can run on available fuel. Plan for power outages and off-grid backup."
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Generator Runtime Calculator",
-          "description": "Estimate how long your generator can run on available fuel. Plan for power outages and off-grid backup.",
-          "applicationCategory": "UtilitiesApplication"
-        }}
+        jsonLd={jsonLd}
       />
 
       <div className="mb-8">
@@ -191,7 +218,33 @@ export default function GenRuntime() {
             </div>
           </div>
           
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-8 mt-8">
+          
+          <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8 mt-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+            
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">How long will a 10 kW generator run on 20 gallons of fuel?</h3>
+                <p className="text-gray-600">
+                  At a 50% load, a 10 kW diesel generator burns roughly 0.45 gallons per hour (gal/h). With 20 gallons of fuel, it will run for approximately <strong>44.4 hours</strong>. A gasoline generator burns slightly more, lasting about 30.3 hours on the same fuel amount.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">What consumes the most generator fuel?</h3>
+                <p className="text-gray-600">
+                  Fuel consumption is directly tied to the electrical load (kW). Running high-draw appliances continuously will dramatically increase the fuel burn rate and reduce total runtime. Major culprits include:
+                </p>
+                <ul className="list-disc pl-5 mt-2 text-gray-600 space-y-1">
+                  <li>Well pumps and booster pumps</li>
+                  <li>Electric HVAC compressor startup</li>
+                  <li>Electric water heaters and electric ranges</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-8">
             <h3 className="text-lg font-bold text-gray-900 mb-2">Build Your Full Rural Power Plan</h3>
             <p className="text-gray-600 mb-4">
               Determine your full backup strategy by pairing sizing requirements with long-term fuel costs and storage plans.

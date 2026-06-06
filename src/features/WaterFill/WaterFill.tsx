@@ -39,18 +39,45 @@ export default function WaterFill() {
 
   const results = calculate();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Water Fill Charge Calculator",
+        "description": "Calculate water delivery cost for rural homes, wells, septic, and pools based on your local ZIP code.",
+        "applicationCategory": "UtilitiesApplication"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does it cost to get water delivered to a rural property?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bulk water typically costs between $0.04 and $0.08 per gallon. However, the total cost depends heavily on the delivery fee ($75 to $150 minimum base fee) and mileage distance from the municipal source. Potable (drinking safe) water carries a 50% to 100% premium over non-potable water."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many gallons does a bulk water delivery truck hold?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard bulk bulk water hauling trucks hold between 2,500 and 4,000 gallons. Ordering an amount just above 4,000 gallons usually triggers the need for a second truck, drastically increasing the delivery fee. To save money, always try to order in 4,000-gallon increments."
+            }
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
       <SEO 
-        title="Water Fill Charge Calculator"
+        title="Water Fill & Hauling Cost Calculator | Rural Utility Cost"
         description="Calculate water delivery cost for rural homes, wells, septic, and pools based on your local ZIP code."
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Water Fill Charge Calculator",
-          "description": "Calculate water delivery cost for rural homes, wells, septic, and pools based on your local ZIP code.",
-          "applicationCategory": "UtilitiesApplication"
-        }}
+        jsonLd={jsonLd}
       />
 
       {/* LEFT: CALCULATOR INPUTS */}
@@ -186,23 +213,36 @@ export default function WaterFill() {
           </div>
         </div>
 
-        {/* SEO SNIPPET / FAQ */}
-        <div className="bg-[#1a5f3f]/5 rounded-xl border border-[#1a5f3f]/10 p-5 flex flex-col md:flex-row gap-8">
-          <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">Guide: 2026 Water Fill Costs</h4>
-            <div className="text-[11px] leading-relaxed text-gray-700 space-y-2">
-              <p>When living on a rural property, managing water supply is critical. Standard bulk water sits between $0.04 and $0.08 per gallon. Potable water (drinking quality) typically adds a 50% to 100% premium due to required sanitization.</p>
-              <p>Distance is the biggest variable; trucks burn considerable diesel and endure wear carrying heavy loads. The base delivery fee is often fixed ($75-$150) plus an escalating mileage fee.</p>
+        {/* AI-FRIENDLY FAQ SECTION */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 print:hidden">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">How much does it cost to get water delivered to a rural property?</h3>
+              <p className="text-gray-600 mb-2">
+                Bulk water typically costs between <strong>$0.04 and $0.08 per gallon</strong>. However, the true final cost is heavily dependent on the delivery radius.
+              </p>
+              <p className="text-gray-600">
+                Hauling companies typically charge a flat dispatch fee ($75 to $150 minimum base fee) and an escalating mileage distance from the municipal source. Potable (drinking safe) water carries a 50% to 100% premium over non-potable water due to strict sanitation requirements for the tanks.
+              </p>
             </div>
-          </div>
-          <div className="hidden md:block w-px bg-[#1a5f3f]/10"></div>
-          <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">FAQ Quick Answers</h4>
-            <ul className="text-[11px] space-y-2 text-gray-600">
-              <li><strong>Truck Capacity:</strong> Most carry 2,500 - 4,000 gallons.</li>
-              <li><strong>Potable vs Non-Potable:</strong> Non-potable water cannot be put into household drinking cisterns.</li>
-              <li><strong>Volume Discount:</strong> Ordering close to the maximum capacity of one truck (e.g. 4,000 gal) reduces the effective cost per gallon by avoiding duplicate delivery fees.</li>
-            </ul>
+
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">How many gallons does a bulk water delivery truck hold?</h3>
+              <p className="text-gray-600 mb-2">
+                Standard bulk water hauling trucks hold between <strong>2,500 and 4,000 gallons</strong>. 
+              </p>
+              <p className="text-gray-600">
+                Ordering an amount just above 4,000 gallons (like 4,500 gallons) usually triggers the need for a second truck, duplicating the expensive delivery fee. To save the most money, always try to order in even 4,000-gallon increments to maximize your delivery fee ROI.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Can non-potable water be used for household needs?</h3>
+              <p className="text-gray-600">
+                Non-potable water cannot be placed into cisterns feeding your kitchen sinks or household drinking lines. It is exclusively meant for agricultural irrigation, livestock troughs, construction sites, managing dust control, or filling swimming pools (since pools undergo their own chlorine shock treatment).
+              </p>
+            </div>
           </div>
         </div>
       </section>

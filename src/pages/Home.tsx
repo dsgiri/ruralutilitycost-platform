@@ -234,6 +234,16 @@ const calculatorCategories = [
     desc: "Habitats, livestock, breeding, poultry, and meat processing",
     items: [
       {
+        path: '/livestock-age',
+        title: 'Livestock Age Estimator',
+        desc: 'Estimate the approximate age of cattle based on teeth and horn rings.',
+        icon: PawPrint,
+        features: ['Dentition stages', 'Breed variations', 'Wear level adjustment', 'Horn ring fallback'],
+        color: 'text-amber-600',
+        bg: 'bg-amber-50',
+        border: 'border-amber-100',
+      },
+      {
         path: '/meat-yield',
         title: 'Take-Home Meat Yield',
         desc: 'Estimate how much packaged meat you can expect from a live animal or hanging weight.',
@@ -341,16 +351,6 @@ const calculatorCategories = [
     desc: "Revenue, savings, profit planning",
     items: [
       {
-        path: '/grant-readiness',
-        title: 'Grant Match & Readiness',
-        desc: 'Calculate mandated cash match and reimbursable bridge funding needed for USDA/State grants.',
-        icon: Landmark,
-        features: ['Match % Calculation', 'Bridge Loan Modeling', 'Phase Reimbursables'],
-        color: 'text-emerald-600',
-        bg: 'bg-emerald-50',
-        border: 'border-emerald-100',
-      },
-      {
         path: '/pain-point-priority',
         title: 'Pain Point Priority',
         desc: 'Rank your biggest rural problems by severity, frequency, and impact so you know what to fix first.',
@@ -397,6 +397,16 @@ const calculatorCategories = [
     title: "Government Aid & Grants",
     desc: "Funding, rebates, eligibility",
     items: [
+      {
+        path: '/grant-readiness',
+        title: 'Grant Match & Readiness',
+        desc: 'Calculate mandated cash match and reimbursable bridge funding needed for USDA/State grants.',
+        icon: Landmark,
+        features: ['Match % Calculation', 'Bridge Loan Modeling', 'Phase Reimbursables'],
+        color: 'text-emerald-600',
+        bg: 'bg-emerald-50',
+        border: 'border-emerald-100',
+      },
       {
         path: '/grant-finder',
         title: 'Grant & Aid Finder',
@@ -457,24 +467,26 @@ export default function Home() {
       
       {/* CALCULATOR GRID & UTILITY SEARCH (COMMAND CENTER) */}
       <section className="px-4 py-8 max-w-7xl mx-auto w-full flex-grow">
-        <div className="mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-          <div className="flex-1">
-            <h1 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-3">Free Tools for Rural Living</h1>
-            <p className="text-gray-600 text-lg max-w-2xl">
+        <div className="mb-12">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">
+              Free Tools for Rural Living
+            </h1>
+            <p className="text-gray-600 text-lg md:text-xl mb-8 leading-relaxed">
               Simple, practical calculators and estimates for land development, homestead planning, and stress-free community building.
             </p>
           </div>
           
-          <div className="w-full md:w-[400px] relative shadow-sm shrink-0">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
+          <div className="w-full md:max-w-2xl relative shadow-sm">
+            <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+              <Search className="h-6 w-6 text-gray-400" />
             </div>
             <input
               type="text"
               placeholder="Search tools, features, keywords..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="block w-full pl-11 pr-4 py-3.5 border-gray-200 rounded-xl focus:ring-[#1a5f3f] focus:border-[#1a5f3f] text-gray-900 placeholder-gray-400 text-base shadow-sm bg-white"
+              className="block w-full pl-14 pr-6 py-4 border-2 border-gray-100 rounded-2xl focus:ring-[#1a5f3f] focus:border-[#1a5f3f] text-gray-900 placeholder-gray-400 text-lg shadow-sm hover:shadow-md transition-shadow bg-white"
             />
           </div>
         </div>

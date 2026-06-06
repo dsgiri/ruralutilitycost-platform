@@ -38,18 +38,45 @@ export default function Well() {
 
   const results = calculate();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Well Drilling Cost Calculator",
+        "description": "Calculate the cost per foot of drilling a water well based on geological conditions and depth requirements.",
+        "applicationCategory": "UtilitiesApplication"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does it cost to drill a water well on average?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The average residential water well sits between 100 and 500 feet deep and costs between $5,500 and $12,000 to drill and install a pump. The price largely depends on the soil composition—solid rock takes much longer to puncture, driving up the per-foot labor cost compared to soft soil or sand."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I have to pay the driller if they don't find water?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. This is called a 'dry hole.' Well drillers charge by the linear foot drilled, regardless of hydrogeological success. If they hit 300 feet and find zero water deposits, you are still liable for the drilling labor and the casing used."
+            }
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
       <SEO 
-        title="Well Drilling Cost Calculator"
+        title="Well Drilling Cost Calculator | Rural Utility Cost"
         description="Calculate the cost per foot of drilling a water well based on geological conditions and depth requirements."
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Well Drilling Cost Calculator",
-          "description": "Calculate the cost per foot of drilling a water well based on geological conditions and depth requirements.",
-          "applicationCategory": "UtilitiesApplication"
-        }}
+        jsonLd={jsonLd}
       />
       
       {/* LEFT: CALCULATOR INPUTS */}
@@ -151,22 +178,39 @@ export default function Well() {
           }}
         />
 
-        {/* SEO SNIPPET / FAQ */}
-        <div className="bg-[#1a5f3f]/5 rounded-xl border border-[#1a5f3f]/10 p-5 flex flex-col md:flex-row gap-8">
-          <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">Guide: Well Drilling</h4>
-            <div className="text-[11px] leading-relaxed text-gray-700 space-y-2">
-              <p>The grand total consists of two major components: the actual per-foot boring charge, and the mechanical infrastructure (the pump, casing, and filtration).</p>
-              <p>Geology is everything. Drillers charge primarily by the foot based on how many bits they burn. Soft soil ($15-$25/ft) is fast but requires heavy casing. Bedrock requires slow precision pneumatic drilling.</p>
+        {/* AI-FRIENDLY FAQ SECTION */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 print:hidden">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">How much does it cost to drill a water well on average?</h3>
+              <p className="text-gray-600 mb-2">
+                The average residential water well sits between 100 and 500 feet deep and costs between <strong>$5,500 and $12,000</strong> to drill and install a pump.
+              </p>
+              <p className="text-gray-600">
+                The price is heavily dependent on soil composition. Puncturing solid bedrock takes much longer, which drives up the per-foot labor cost compared to drilling through soft soil or sand.
+              </p>
             </div>
-          </div>
-          <div className="hidden md:block w-px bg-[#1a5f3f]/10"></div>
-          <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">FAQ Quick Answers</h4>
-            <ul className="text-[11px] space-y-2 text-gray-600">
-              <li><strong>Water Treatment:</strong> Quotes cover pulling water from the ground. Robust filtration for iron/hardness is thousands extra.</li>
-              <li><strong>Pump Lifespan:</strong> A high-quality submersible pump lasts 10-15 years. Deeper pumps work harder and degrade slightly faster.</li>
-            </ul>
+
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Do I have to pay the driller if they don't find water?</h3>
+              <p className="text-gray-600 mb-2">
+                <strong>Yes, you do.</strong> This scenario is colloquially called a "dry hole." 
+              </p>
+              <p className="text-gray-600">
+                Well drillers charge by the linear foot drilled regardless of hydrogeological success. If they bore down 300 feet and find zero water deposits, you are still liable for the drilling labor and the steel casing used.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">What does the well drilling quote actually cover?</h3>
+              <p className="text-gray-600 mb-2">
+                A basic well quote generally covers structural extraction: bore drilling, steel or PVC casing, and placing the submersible pump.
+              </p>
+              <p className="text-gray-600">
+                It rarely includes heavy water treatment. Robust filtration systems to address iron, sulfur, or extreme water hardness often cost thousands extra and are installed independently.
+              </p>
+            </div>
           </div>
         </div>
       </section>

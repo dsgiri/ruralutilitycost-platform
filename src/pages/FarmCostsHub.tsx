@@ -95,6 +95,19 @@ export default function FarmCostsHub() {
             Calculate Dates <ChevronRight className="w-4 h-4 ml-1" />
           </Link>
         </div>
+
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+          <div className="bg-indigo-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+            <Beef className="text-indigo-600 w-6 h-6" />
+          </div>
+          <h2 className="text-xl font-bold text-gray-900 mb-2">Livestock Age Estimator</h2>
+          <p className="text-gray-600 mb-4">
+            Estimate the approximate age of a cow or steer using dentition (teeth eruption) and wear stages.
+          </p>
+          <Link to="/livestock-age" className="text-blue-600 font-medium flex items-center hover:text-blue-700">
+            Estimate Age <ChevronRight className="w-4 h-4 ml-1" />
+          </Link>
+        </div>
       </div>
 
       <div className="bg-gray-50 rounded-2xl p-8 mb-12">

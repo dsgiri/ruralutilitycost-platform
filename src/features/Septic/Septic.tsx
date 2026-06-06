@@ -31,18 +31,45 @@ export default function Septic() {
 
   const results = calculate();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Septic Tank Size Calculator",
+        "description": "Calculate the required septic tank size based on the number of bedrooms and soil type for residential rural properties.",
+        "applicationCategory": "UtilitiesApplication"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What size septic tank do I need for a 3-bedroom house?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For a standard 3-bedroom house, building codes typically require a minimum septic tank size of 1,000 gallons. If you have poor soil (like heavy clay) or use a garbage disposal, inspectors will usually mandate a 1,250-gallon tank to provide extra settling time before wastewater enters the drain field."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is septic tank size based on square footage or bedrooms?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Septic tank size is based strictly on the number of bedrooms, not the total square footage of the house. This is because health departments correlate the number of bedrooms to the maximum potential human occupancy, which drives daily water usage."
+            }
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
       <SEO 
-        title="Septic Tank Size Calculator"
+        title="Septic Tank Size Calculator | Rural Utility Cost"
         description="Calculate the required septic tank size based on the number of bedrooms and soil type for residential rural properties."
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Septic Tank Size Calculator",
-          "description": "Calculate the required septic tank size based on the number of bedrooms and soil type for residential rural properties.",
-          "applicationCategory": "UtilitiesApplication"
-        }}
+        jsonLd={jsonLd}
       />
       
       {/* LEFT: CALCULATOR INPUTS */}
@@ -145,25 +172,38 @@ export default function Septic() {
           </div>
         </div>
 
-        {/* SEO SNIPPET / HOW IT WORKS */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 mt-4">
-          <h3 className="flex items-center gap-2 text-base font-bold text-gray-900 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#1a5f3f]"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            How it works
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-600">
+        {/* AI-FRIENDLY FAQ & HOW IT WORKS */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mt-4 print:hidden">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-6">
             <div>
-              <h4 className="font-bold text-gray-800 mb-2">Sizing by Bedrooms:</h4>
-              <p className="mb-2">By standard building codes, tank sizing is calculated based on the <strong>number of bedrooms</strong>, rather than square footage. This protects the system against maximum possible human occupancy should the house be sold.</p>
-              <p>A 1, 2, or 3-bedroom home generally requires a 1,000-gal absolute minimum. You cannot install a smaller tank just because "only 2 people live here."</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">What size septic tank do I need for a 3-bedroom house?</h3>
+              <p className="text-gray-600 mb-2">
+                For a standard 3-bedroom house, building codes typically require an absolute minimum septic tank size of <strong>1,000 gallons</strong>. 
+              </p>
+              <p className="text-gray-600">
+                If you have poor soil (like heavy clay) or heavily use a garbage disposal, inspectors will usually mandate a 1,250-gallon tank. The extra volume provides necessary settling time before wastewater is pushed into the drain field.
+              </p>
             </div>
+
             <div>
-              <h4 className="font-bold text-gray-800 mb-2">Soil and Drain Field:</h4>
-              <ul className="list-disc pl-5 mt-2 space-y-1 marker:text-[#1a5f3f]">
-                <li><strong>Good Soil (Sandy):</strong> Allows water to perc quickly.</li>
-                <li><strong>Poor Soil (Clay):</strong> Slow drainage means solid wastes must settle longer in the tank. We add a 25% buffer to tank capacity for poor soil to prevent drain field blowout.</li>
-                <li><strong>Pumping:</strong> A properly sized 1,000-gal tank for a family of 4 still needs pumping every 2-3 years.</li>
-              </ul>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Is septic tank size based on square footage or bedrooms?</h3>
+              <p className="text-gray-600 mb-2">
+                Septic tank size is based strictly on the <strong>number of bedrooms</strong>, not the total square footage of the house.
+              </p>
+              <p className="text-gray-600">
+                Health departments and environmental agencies use bedrooms as a legal proxy for maximum potential human occupancy. Even if only two people live in a massive 4-bedroom house, the system must handle the load of a large family if the house is sold later.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">How does soil type affect septic systems?</h3>
+              <p className="text-gray-600 mb-2">
+                Good soil (like sand or loam) allows water to percolate down quickly, allowing for smaller, cheaper drain fields and standard-sized tanks.
+              </p>
+              <p className="text-gray-600">
+                Poor soil (heavy, dense clay) acts like a bathtub. The water drains very slowly. To prevent the drain field from flooding and blowing out (a major structural failure), you must install a larger tank to slow the flow of new water, and drastically increase the physical size of the drain field trenches.
+              </p>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ This registry serves as the definitive system-of-record for all calculator logic
 Use these unique `CALC` tracking codes in Jira, GitHub issues, and code documentation.
 
 * **Last Updated:** 2026-06-06
-* **Total Modules Mapped:** 29
+* **Total Modules Mapped:** 32
 
 ---
 
@@ -217,6 +217,14 @@ Use these unique `CALC` tracking codes in Jira, GitHub issues, and code document
 * **Core Calculation:** `Set_Date + Incubation_Days`
 * **Outputs:** Hatch date, "lockdown" date (when to stop turning eggs to raise humidity).
 * **Target Pain Points:** Poor hatch rates due to forgetting to raise humidity at lockdown.
+
+### `CALC-FARM-311`: Livestock Age Estimator (`/livestock-age`)
+* **Description:** Estimates approximate age of live cattle using dentition and horn rings.
+* **Functionality:** Age range generation prioritizing permanent incisor stages.
+* **Inputs:** Dentition stage, breed type, optional horn rings, wear level, confidence mode.
+* **Core Calculation:** Maps dentition (e.g. 2, 4, 6, 8 incisors) to base age ranges in months, applying modifiers to widen the range for unknown breed, severe wear, and noting horn rings as low-confidence fallback.
+* **Outputs:** Estimated age range in months and years, confidence level, method used, and limitations explanation.
+* **Target Pain Points:** Needing to age cattle for management or sales without accurate birth records.
 
 ---
 

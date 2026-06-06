@@ -42,6 +42,7 @@ import SyrupMix from './features/SyrupMix/SyrupMix';
 import MeatYield from './features/MeatYield/MeatYield';
 import MeatProcessing from './features/MeatProcessing/MeatProcessing';
 import MeatCostPerLb from './features/MeatCostPerLb/MeatCostPerLb';
+import LivestockAge from './features/LivestockAge/LivestockAge';
 import GenRuntime from './features/GenRuntime/GenRuntime';
 import GenFuelCost from './features/GenFuelCost/GenFuelCost';
 import GenCriticalLoad from './features/GenCriticalLoad/GenCriticalLoad';
@@ -81,6 +82,7 @@ export default function App() {
           <Route path="/meat-yield" element={<MeatYield />} />
           <Route path="/meat-processing" element={<MeatProcessing />} />
           <Route path="/meat-cost-per-lb" element={<MeatCostPerLb />} />
+          <Route path="/livestock-age" element={<LivestockAge />} />
           <Route path="/gen-runtime" element={<GenRuntime />} />
           <Route path="/gen-fuel-cost" element={<GenFuelCost />} />
           <Route path="/gen-critical-load" element={<GenCriticalLoad />} />
