@@ -53,6 +53,21 @@ Use the existing style unless explicitly asked to change it.
 
 **Avoid:** Excessive animations, Overly decorative gradients, Tiny text blocks, Crowded dashboards, Confusing icon spam, “Startup fluff” language, UI that looks generic but not purposeful.
 
+## PROJECT STRUCTURE & ARCHITECTURE RULES
+Use a hybrid model for organizing the project:
+- **Global instructions:** Root-level documentation (like this one) for project-wide standards.
+- **Dedicated calculator folders:** Create one dedicated folder per major calculator.
+- **Shared utilities:** Use shared folders for reusable logic, UI components, and utilities.
+
+**Rule of Thumb for Dedicated Folders:**
+Do not force every tiny/trivial calculator into a heavy, complex folder structure if it only needs one or two files.
+Create a dedicated calculator directory when the feature has:
+- Unique business logic.
+- Multiple tests.
+- Its own UI state definitions.
+- Sharing/export behavior.
+- Or enough complexity that an AI agent or human benefits from isolated instructions and separation of concerns.
+
 ## IMPLEMENTATION RULES
 **Code quality:**
 - Use the existing stack and project conventions.
@@ -105,6 +120,13 @@ If the task involves a calculator:
 
 **Good calculator patterns:** Input section, Optional assumptions section, Results summary, Breakdown or formula explanation, Reference notes or sources if relevant, Callouts for limitations and caveats.
 If there is uncertainty in the math or business logic, flag it instead of pretending certainty.
+
+**Export & Sharing Rules:**
+High-value calculators should support:
+- **Print:** Clean summary views (via print media queries).
+- **Download:** PDF for formatted reports; CSV for itemized data/lists.
+- **Share:** Link-based sharing with state encoded securely in the URL.
+*Note: Do not force print/download/share buttons into tiny or trivial calculators if it adds clutter. Include these paths primarily when generating lists or complex reports.*
 
 ## WHEN BUILDING CONTENT PAGES
 If the task involves an informational page:

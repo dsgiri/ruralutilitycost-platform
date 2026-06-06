@@ -222,6 +222,14 @@ Use these unique `CALC` tracking codes in Jira, GitHub issues, and code document
 
 ## 💼 4. Business & Profit (`BIZ`)
 
+### `CALC-BIZ-404`: Pain Point Priority Calculator (`/pain-point-priority`)
+* **Description:** Ranks farm and utility problems by severity, frequency, and effort required to fix.
+* **Functionality:** Uses a 1-5 matrix scoring logic to sort pain points into priority tiers (e.g., Quick Wins vs Long-Term Projects). Saves dynamic list state locally.
+* **Inputs:** Name, Severity, Frequency, Cost Impact, Time Impact, Risk/Urgency, Effort to Fix.
+* **Core Calculation:** `Pain Score = Sum(Severity + Frequency + Cost + Time + Risk)`. Tiering logic filters based on Pain Score mapped against the `Effort` modifier.
+* **Outputs:** Sorted priority list, overall Pain Score, Tier classification tag.
+* **Target Pain Points:** Feeling overwhelmed by too many property issues and not knowing where to deploy limited capital first.
+
 ### `CALC-BIZ-401`: Cut Cost (`/cut-cost`)
 * **Description:** Identifies utility/overhead reductions in operational farm flow.
 * **Functionality:** Compares current expenditure to optimized.
@@ -257,3 +265,11 @@ Use these unique `CALC` tracking codes in Jira, GitHub issues, and code document
 * **Core Calculation:** Filter queries matched against major programs (EQIP, REAP, VAPG).
 * **Outputs:** List of likely matched grants, estimated funding tier bounds.
 * **Target Pain Points:** USDA grant landscape is too opaque for independent rural owners.
+
+### `CALC-GOV-502`: Grant Readiness & Match (`/grant-readiness`)
+* **Description:** Calculates required matching funds and bridging cash flow for reimbursable rural grants (e.g., USDA REAP/EQIP).
+* **Functionality:** Uses tabs for simple % matching and phased reimbursement bridge loan calculations.
+* **Inputs:** Total project cost, grant match %, phases of project.
+* **Core Calculation:** `Total Cost * (1 - Grant %)` for match, plus upfront cash-in-hand requirement.
+* **Outputs:** Required cash on hand, reimbursable amount, out-of-pocket total.
+* **Target Pain Points:** Winning a grant but not realizing you have to spend the money upfront before the government reimburses you.

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, Home as HomeIcon, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap, ShieldCheck, Map, Leaf, Hexagon, Beaker, Scale, Tag, Package, Menu, ChevronLeft, ChevronRight, Clock, ZapOff } from 'lucide-react';
+import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, Home as HomeIcon, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap, ShieldCheck, Map, Leaf, Hexagon, Beaker, Scale, Tag, Package, Menu, ChevronLeft, ChevronRight, Clock, ZapOff, AlertOctagon, Landmark } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { ReactNode, useState, useEffect } from 'react';
 import { Logo } from './Logo';
@@ -63,6 +63,8 @@ const navCategories = [
     categoryIcon: TrendingUp,
     title: "Business & Profit",
     items: [
+      { path: '/grant-readiness', label: 'Grant Match & Readiness', icon: Landmark, tooltip: 'Calculate cash match and bridge funding' },
+      { path: '/pain-point-priority', label: 'Pain Point Priority', icon: AlertOctagon, tooltip: 'Rank your biggest rural problems by severity to know what to fix first' },
       { path: '/cut-cost', label: 'Cut Cost', icon: Scissors, tooltip: 'Find areas to reduce operational overhead' },
       { path: '/expand-profit', label: 'Expand Profit', icon: TrendingUp, tooltip: 'Find out how to increase margins' },
       { path: '/compliance', label: 'Processing & Compliance', icon: ShieldCheck, tooltip: 'Verify state/federal regulatory compliance' },

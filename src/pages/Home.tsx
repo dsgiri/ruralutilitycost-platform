@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, ArrowRight, CheckCircle2, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap, ShieldCheck, Map, Leaf, Hexagon, Beaker, Scale, Tag, Package, Clock, ZapOff } from 'lucide-react';
+import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi, Tv, ArrowRight, CheckCircle2, Flame, Crop, CalendarHeart, Bird, Scissors, TrendingUp, Search, Zap, ShieldCheck, Map, Leaf, Hexagon, Beaker, Scale, Tag, Package, Clock, ZapOff, AlertOctagon, Landmark } from 'lucide-react';
 
 const calculatorCategories = [
   {
@@ -280,6 +280,26 @@ const calculatorCategories = [
     title: "Business & Profit",
     desc: "Revenue, savings, profit planning",
     items: [
+      {
+        path: '/grant-readiness',
+        title: 'Grant Match & Readiness',
+        desc: 'Calculate mandated cash match and reimbursable bridge funding needed for USDA/State grants.',
+        icon: Landmark,
+        features: ['Match % Calculation', 'Bridge Loan Modeling', 'Phase Reimbursables'],
+        color: 'text-emerald-600',
+        bg: 'bg-emerald-50',
+        border: 'border-emerald-100',
+      },
+      {
+        path: '/pain-point-priority',
+        title: 'Pain Point Priority',
+        desc: 'Rank your biggest rural problems by severity, frequency, and impact so you know what to fix first.',
+        icon: AlertOctagon,
+        features: ['Live ranking', 'Quick-Win vs Long-Term tiers', 'Saved to local device'],
+        color: 'text-rose-600',
+        bg: 'bg-rose-50',
+        border: 'border-rose-100',
+      },
       {
         path: '/cut-cost',
         title: 'Cut Cost Calculator',

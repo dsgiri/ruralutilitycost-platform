@@ -39,6 +39,8 @@ import MeatCostPerLb from './pages/MeatCostPerLb';
 import GenRuntime from './pages/GenRuntime';
 import GenFuelCost from './pages/GenFuelCost';
 import GenCriticalLoad from './pages/GenCriticalLoad';
+import PainPointPriority from './pages/PainPointPriority';
+import GrantReadiness from './pages/GrantReadiness';
 
 export default function App() {
   return (
@@ -70,6 +72,8 @@ export default function App() {
           <Route path="/gen-runtime" element={<GenRuntime />} />
           <Route path="/gen-fuel-cost" element={<GenFuelCost />} />
           <Route path="/gen-critical-load" element={<GenCriticalLoad />} />
+          <Route path="/pain-point-priority" element={<PainPointPriority />} />
+          <Route path="/grant-readiness" element={<GrantReadiness />} />
           <Route path="/energy-demand" element={<EnergyDemand />} />
           <Route path="/gestation" element={<Gestation />} />
           <Route path="/incubation" element={<Incubation />} />
