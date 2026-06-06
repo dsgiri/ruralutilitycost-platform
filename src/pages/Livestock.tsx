@@ -162,7 +162,7 @@ export default function Livestock() {
         {/* SEO SNIPPET / FAQ */}
         <div className="bg-[#1a5f3f]/5 rounded-xl border border-[#1a5f3f]/10 p-5 flex flex-col md:flex-row gap-8">
           <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">SEO Guide: Livestock Hydration</h4>
+            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">Guide: Livestock Hydration</h4>
             <div className="text-[11px] leading-relaxed text-gray-700 space-y-2">
               <p>Ensuring continuous access to fresh water is a financial necessity. Mild dehydration stalls weight gain in beef cattle, and aggressively drops milk production.</p>
               <p>Rules of Thumb: Cattle (Dry): 15 gal/day per 100 lbs. Cattle (Lactating): 70 - 140+ gallons daily. Chickens: 0.5 gal per 10 birds. </p>

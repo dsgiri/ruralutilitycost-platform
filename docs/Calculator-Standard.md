@@ -130,7 +130,23 @@ High-value calculators should support Print, Download, and Share capabilities wh
 - Do not force print/download/share buttons into tiny or trivial calculators if it adds unnecessary UI clutter.
 - If a calculator generates a list, checklist, or complex financial report, a user-friendly export path is required.
 
-## 10. Trust and Reliability Standards
+## 10. Usage Instructions & Help Text
+Every calculator should include enough guidance to make it usable without guesswork, but instructions should be short, contextual, and proportionate to complexity.
+
+**When to include instructions:**
+- When the calculator uses unfamiliar terms or jargon.
+- When there are multiple steps or phases.
+- When the math relies on background assumptions.
+- When ranking or scoring logic is applied.
+- When the output can easily be misread or misused.
+*(Skip heavy instructions for obvious, single-step utility tools).*
+
+**Best Format (Layered Structure):**
+- **Inline Help:** Short helper text (`<p className="text-sm text-gray-500">`) directly underneath confusing inputs.
+- **"How it works" Block:** A brief explainer placed near the results or at the bottom.
+- **Advanced Notes/Disclaimers:** Used to explain edge cases or complex formulas out of the main flow.
+
+## 11. Trust and Reliability Standards
 To maintain credibility as a rural toolset:
 - **Transparent Formulas:** Users must understand how the math works.
 - **Safe Error Messages:** Catch invalid inputs (e.g., letters in numeric fields) politely.
@@ -141,7 +157,7 @@ To maintain credibility as a rural toolset:
 
 If a calculator poses a high risk of leading to dangerous structural or financial decisions without proper regulatory context, it should not be shipped until a clear disclaimer strategy is approved.
 
-## 11. Out-of-Scope Ideas
+## 12. Out-of-Scope Ideas
 Do not add these to the site unless heavily justified and approved:
 - Random novelty tools (e.g., "What farm animal are you?").
 - Tools completely unrelated to rural utility, homesteading, or farm planning.
@@ -150,7 +166,7 @@ Do not add these to the site unless heavily justified and approved:
 - Complex scientific models that lack end-user clarity.
 - Tools that provide strict legal, structural engineering, or regulatory sign-off without professional verification disclaimers.
 
-## 12. Review Checklist
+## 13. Review Checklist
 Before approving or building a new calculator idea, the Vibe Coding Agent (and human reviewer) must verify:
 - [ ] Does this solve a real rural problem?
 - [ ] Can the user understand what it does in one sentence?
@@ -163,7 +179,7 @@ Before approving or building a new calculator idea, the Vibe Coding Agent (and h
 - [ ] Will it actively help users prioritize an issue or save money?
 - [ ] Does it match the brand's practical, trustworthy tone?
 
-## 13. Example Calculator Categories
+## 14. Example Calculator Categories
 *(See the Unified Calculator Registry for the active system-of-record limit.)*
 Examples of valid calculator additions:
 - **Property:** Gravel tonnage, fill dirt volume.
@@ -171,7 +187,7 @@ Examples of valid calculator additions:
 - **Farm:** Meat yield, gestation timelines.
 - **Community:** Prioritization matrix.
 
-## 14. Future Expansion Rules
+## 15. Future Expansion Rules
 The standard explicitly encourages the site to grow into new necessary areas, including but not limited to:
 - Expanded livestock management tools
 - Advanced meat yield modeling

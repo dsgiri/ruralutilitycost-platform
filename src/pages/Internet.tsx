@@ -174,7 +174,7 @@ export default function Internet() {
         {/* SEO SNIPPET / FAQ */}
         <div className="bg-[#1a5f3f]/5 rounded-xl border border-[#1a5f3f]/10 p-5 flex flex-col md:flex-row gap-8 mt-auto">
           <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">SEO Guide: Rural Internet Costs in 2026</h4>
+            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">Guide: Rural Internet Costs in 2026</h4>
             <div className="text-[11px] leading-relaxed text-gray-700 space-y-2">
               <p>Choosing internet for a rural home used to mean suffering with slow DSL. Today, Starlink ($70-130/mo) and 5G Home Internet ($50-100/mo) deliver true broadband speeds to remote properties.</p>
               <p>If fiber optic cabling ($60-120/mo) has reached your ZIP code through rural broadband initiatives, it remains the gold standard for latency and unmetered data transfers.</p>

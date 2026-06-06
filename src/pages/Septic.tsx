@@ -133,7 +133,7 @@ export default function Septic() {
         {/* SEO SNIPPET / FAQ */}
         <div className="bg-[#1a5f3f]/5 rounded-xl border border-[#1a5f3f]/10 p-5 flex flex-col md:flex-row gap-8">
           <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">SEO Guide: Septic Tank Sizing</h4>
+            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">Guide: Septic Tank Sizing</h4>
             <div className="text-[11px] leading-relaxed text-gray-700 space-y-2">
               <p>By standard building codes, tank sizing is calculated based on the <strong>number of bedrooms</strong>, rather than square footage. This indicates maximum possible human occupancy and daily water usage.</p>
               <p>A 1 or 2-bedroom home requires a 1,000-gal absolute minimum. The quality of soil (clay vs sand) determines percolation. "Poor soil" heavily increases required settling time inside the tank.</p>

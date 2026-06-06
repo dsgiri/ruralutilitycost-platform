@@ -149,7 +149,7 @@ export default function Gravel() {
         {/* SEO SNIPPET / FAQ */}
         <div className="bg-[#1a5f3f]/5 rounded-xl border border-[#1a5f3f]/10 p-5 flex flex-col md:flex-row gap-8">
           <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">SEO Guide: Gravel Estimating</h4>
+            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">Guide: Gravel Estimating</h4>
             <div className="text-[11px] leading-relaxed text-gray-700 space-y-2">
               <p>Gravel density requires a 1.5x multiplier when converting cubic yards to tons. A brand new driveway should have a minimum of 4 inches of gravel to distribute the weight of vehicles without exposing bare soil. A top-up dressing usually requires 2 inches.</p>
             </div>

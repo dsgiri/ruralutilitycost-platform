@@ -121,6 +121,14 @@ If the task involves a calculator:
 **Good calculator patterns:** Input section, Optional assumptions section, Results summary, Breakdown or formula explanation, Reference notes or sources if relevant, Callouts for limitations and caveats.
 If there is uncertainty in the math or business logic, flag it instead of pretending certainty.
 
+**Usage Instructions & Help Text:**
+Every calculator should include enough guidance to make it usable without guesswork, but instructions should be short, contextual, and proportionate to complexity.
+- **When to add:** For unfamiliar terms, multi-step logic, background assumptions, ranking logic, or easily misused tools. Skip for obvious ones.
+- **How to add:**
+  - **Inline Help:** Placed immediately beside or below the relevant input field.
+  - **"How it works":** Short block below the results or in an info card.
+  - **Advanced Notes:** Clear disclaimers for edge cases and formulas.
+
 **Export & Sharing Rules:**
 High-value calculators should support:
 - **Print:** Clean summary views (via print media queries).

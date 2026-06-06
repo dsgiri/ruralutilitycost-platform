@@ -173,7 +173,7 @@ export default function WaterFill() {
         {/* SEO SNIPPET / FAQ */}
         <div className="bg-[#1a5f3f]/5 rounded-xl border border-[#1a5f3f]/10 p-5 flex flex-col md:flex-row gap-8">
           <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">SEO Guide: 2026 Water Fill Costs</h4>
+            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">Guide: 2026 Water Fill Costs</h4>
             <div className="text-[11px] leading-relaxed text-gray-700 space-y-2">
               <p>When living on a rural property, managing water supply is critical. Standard bulk water sits between $0.04 and $0.08 per gallon. Potable water (drinking quality) typically adds a 50% to 100% premium due to required sanitization.</p>
               <p>Distance is the biggest variable; trucks burn considerable diesel and endure wear carrying heavy loads. The base delivery fee is often fixed ($75-$150) plus an escalating mileage fee.</p>

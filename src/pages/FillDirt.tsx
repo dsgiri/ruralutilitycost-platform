@@ -160,7 +160,7 @@ export default function FillDirt() {
         {/* SEO SNIPPET / FAQ */}
         <div className="bg-[#1a5f3f]/5 rounded-xl border border-[#1a5f3f]/10 p-5 flex flex-col md:flex-row gap-8">
           <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">SEO Guide: Dirt Volumes</h4>
+            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">Guide: Dirt Volumes</h4>
             <div className="text-[11px] leading-relaxed text-gray-700 space-y-2">
               <p>Volumes are measured in cubic yards (occupational space), but trucking is billed by weight (tons). Due to soil density, 1 cubic yard translates to roughly 1.4 tons.</p>
               <p>Prices vary by proximity to excavation sources. In 2026, low-cost rural areas avg $15/ton, whereas urban/high-cost regions easily reach $40/ton prior to long-haul delivery fees.</p>

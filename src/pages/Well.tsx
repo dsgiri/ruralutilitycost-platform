@@ -139,7 +139,7 @@ export default function Well() {
         {/* SEO SNIPPET / FAQ */}
         <div className="bg-[#1a5f3f]/5 rounded-xl border border-[#1a5f3f]/10 p-5 flex flex-col md:flex-row gap-8">
           <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">SEO Guide: Well Drilling</h4>
+            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">Guide: Well Drilling</h4>
             <div className="text-[11px] leading-relaxed text-gray-700 space-y-2">
               <p>The grand total consists of two major components: the actual per-foot boring charge, and the mechanical infrastructure (the pump, casing, and filtration).</p>
               <p>Geology is everything. Drillers charge primarily by the foot based on how many bits they burn. Soft soil ($15-$25/ft) is fast but requires heavy casing. Bedrock requires slow precision pneumatic drilling.</p>

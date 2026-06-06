@@ -193,7 +193,7 @@ export default function Cable() {
         {/* SEO SNIPPET / FAQ */}
         <div className="bg-[#1a5f3f]/5 rounded-xl border border-[#1a5f3f]/10 p-5 flex flex-col md:flex-row gap-8 mt-auto">
           <div className="flex-1">
-            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">SEO Guide: Rural TV Providers</h4>
+            <h4 className="text-xs font-bold text-[#1a5f3f] mb-2 uppercase">Guide: Rural TV Providers</h4>
             <div className="text-[11px] leading-relaxed text-gray-700 space-y-2">
               <p>For rural properties, Dish Network and DirecTV have been local staples, generally costing $60-150/month. However, with the invasion of robust satellite internet (Starlink), Streaming bundles ($50-120/mo) like YouTube TV and Hulu are dominating.</p>
               <p>Wired Cable is rarely viable far outside city limits unless heavy public infrastructure subsidies pushed line deployments down your road recently.</p>
