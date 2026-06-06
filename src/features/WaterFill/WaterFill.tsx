@@ -171,6 +171,21 @@ export default function WaterFill() {
           }}
         />
 
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-4 mt-2">
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Build Your Full Rural Water Plan</h3>
+          <p className="text-gray-600 mb-4">
+            Compare hauling water against drilling a permanent well and estimate your septic system costs.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a href="/water-planning" className="inline-flex items-center justify-center px-5 py-2.5 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm">
+              Return to Water Planning Hub
+            </a>
+            <a href="/well" className="inline-flex items-center text-cyan-600 font-medium hover:text-cyan-700">
+              Estimate Well Costs →
+            </a>
+          </div>
+        </div>
+
         {/* SEO SNIPPET / FAQ */}
         <div className="bg-[#1a5f3f]/5 rounded-xl border border-[#1a5f3f]/10 p-5 flex flex-col md:flex-row gap-8">
           <div className="flex-1">

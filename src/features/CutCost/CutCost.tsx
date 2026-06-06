@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { SEO } from '../../components/SEO';
 import { ExportActions } from '../../components/ExportActions';
 

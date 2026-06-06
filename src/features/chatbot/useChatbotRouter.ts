@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { classifyIntent } from "./routing";
+import { sanitizeInput } from "./security-checks";
+import { logChatbotEvent } from "./analytics";
 import type { ChatMessage } from "./chat-types";
 
 function uid() {
@@ -19,10 +21,24 @@ export function useChatbotRouter() {
   const [input, setInput] = useState("");
 
   const sendMessage = (text?: string) => {
-    const value = (text ?? input).trim();
+    const rawValue = text ?? input;
+    const value = sanitizeInput(rawValue);
+    
     if (!value) return;
 
+    // Log the user's attempt safely
+    logChatbotEvent("chatbot_message_sent", { 
+      intent_hint: value.slice(0, 30) // Only log a safe snippet for analytics
+    });
+
     const classification = classifyIntent(value);
+
+    // Track intent classification results
+    logChatbotEvent("chatbot_intent_classified", {
+      primary_intent: classification.primary_intent,
+      confidence: classification.confidence,
+      needs_clarification: classification.needs_clarification
+    });
 
     let assistantText = classification.needs_clarification
       ? classification.clarifying_question || "One quick question will help narrow it down."

@@ -97,7 +97,14 @@ export function ChatbotPanel({ open, onClose }: { open: boolean; onClose: () => 
         </form>
 
         <div className="mt-3 text-center">
-          <Link to="/" onClick={onClose} className="text-xs text-gray-500 hover:text-[#1a5f3f] transition-colors">
+          <Link 
+            to="/" 
+            onClick={() => {
+              import('./analytics').then(({ logChatbotEvent }) => logChatbotEvent('chatbot_browse_all_clicked'));
+              onClose();
+            }} 
+            className="text-xs text-gray-500 hover:text-[#1a5f3f] transition-colors"
+          >
             Browse all calculators
           </Link>
         </div>

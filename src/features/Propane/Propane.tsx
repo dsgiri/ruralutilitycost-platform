@@ -133,6 +133,21 @@ export default function Propane() {
                 </p>
               </div>
 
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-8 mt-8">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Build Your Full Rural Budget</h3>
+                <p className="text-gray-600 mb-4">
+                  Determine your complete property operating costs.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <a href="/utility-cost" className="inline-flex items-center justify-center px-5 py-2.5 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm">
+                    Return to Utility Cost Hub
+                  </a>
+                  <a href="/energy-demand" className="inline-flex items-center text-orange-600 font-medium hover:text-orange-700">
+                    Calculate Peak Demand →
+                  </a>
+                </div>
+              </div>
+
               <ExportActions 
                 title="Propane Refill"
                 data={{

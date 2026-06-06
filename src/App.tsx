@@ -30,6 +30,9 @@ import Disclaimer from './pages/Disclaimer';
 import CookiePolicy from './pages/CookiePolicy';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import GeneratorHub from './pages/GeneratorHub';
+import UtilityCostHub from './pages/UtilityCostHub';
+import WaterPlanningHub from './pages/WaterPlanningHub';
 import HiveStartup from './features/HiveStartup/HiveStartup';
 import HoneyYield from './features/HoneyYield/HoneyYield';
 import SyrupMix from './features/SyrupMix/SyrupMix';
@@ -50,6 +53,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/generator-planning" element={<GeneratorHub />} />
+          <Route path="/utility-cost" element={<UtilityCostHub />} />
+          <Route path="/water-planning" element={<WaterPlanningHub />} />
           <Route path="/water-fill" element={<WaterFill />} />
           <Route path="/septic" element={<Septic />} />
           <Route path="/fill-dirt" element={<FillDirt />} />

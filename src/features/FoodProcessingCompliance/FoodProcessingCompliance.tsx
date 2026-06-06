@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SEO } from '../../components/SEO';
 import { ExportActions } from '../../components/ExportActions';
-import { ClipboardCheck, Tag, DollarSign, AlertCircle, ShieldCheck, FileText, CheckCircle2, Scale } from 'lucide-react';
+import { ClipboardCheck, Tag, DollarSign, AlertCircle, ShieldCheck, FileText, CheckCircle2, Scale, Info } from 'lucide-react';
 
 type Tab = 'cost' | 'label' | 'readiness';
 

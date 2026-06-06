@@ -68,6 +68,7 @@ export default function GenCriticalLoad() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* ... existing columns ... */}
         <div className="lg:col-span-2 space-y-6">
           <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -165,6 +166,21 @@ export default function GenCriticalLoad() {
                 />
                 <p className="text-xs text-gray-500 mt-1">E.g., 72 hours for a standard 3-day emergency prep expectation.</p>
               </div>
+            </div>
+          </div>
+          
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-8 mt-8">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Build Your Full Rural Power Plan</h3>
+            <p className="text-gray-600 mb-4">
+              Determine your full backup strategy by pairing sizing requirements with long-term fuel costs and storage plans.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a href="/generator-planning" className="inline-flex items-center justify-center px-5 py-2.5 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm">
+                Return to Generator Hub
+              </a>
+              <a href="/gen-runtime" className="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-700">
+                Calculate Runtime →
+              </a>
             </div>
           </div>
         </div>
