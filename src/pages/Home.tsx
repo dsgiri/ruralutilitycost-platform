@@ -5,6 +5,7 @@ import { Droplet, LayoutGrid, Shovel, Trees, ArrowDownToDot, PawPrint, Sun, Wifi
 
 const calculatorCategories = [
   {
+    id: "property",
     title: "Property & Construction",
     desc: "Building, land prep, site work",
     items: [
@@ -71,6 +72,7 @@ const calculatorCategories = [
     ]
   },
   {
+    id: "utilities",
     title: "Energy & Utilities",
     desc: "Water, propane, solar, internet, power",
     items: [
@@ -137,6 +139,7 @@ const calculatorCategories = [
     ]
   },
   {
+    id: "farm",
     title: "Agriculture & Habitat",
     desc: "Habitats, livestock, breeding, poultry",
     items: [
@@ -183,6 +186,7 @@ const calculatorCategories = [
     ]
   },
   {
+    id: "business",
     title: "Business & Profit",
     desc: "Revenue, savings, profit planning",
     items: [
@@ -219,6 +223,7 @@ const calculatorCategories = [
     ]
   },
   {
+    id: "grants",
     title: "Government Aid & Grants",
     desc: "Funding, rebates, eligibility",
     items: [
@@ -269,10 +274,12 @@ export default function Home() {
       
       {/* CALCULATOR GRID & UTILITY SEARCH (COMMAND CENTER) */}
       <section className="px-4 py-8 max-w-7xl mx-auto w-full flex-grow">
-        <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div className="flex-1">
-            <h1 className="text-3xl md:text-4xl font-black text-gray-900 uppercase tracking-tight mb-2">Calculation Tools</h1>
-            <p className="text-gray-500 font-medium tracking-wide">Select a utility to start calculating, or search for a specific tool.</p>
+            <h1 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-3">Free Tools for Rural Living</h1>
+            <p className="text-gray-600 text-lg max-w-2xl">
+              Simple, practical calculators and estimates for land development, homestead planning, and stress-free community building.
+            </p>
           </div>
           
           <div className="w-full md:w-[400px] relative shadow-sm shrink-0">
@@ -304,7 +311,7 @@ export default function Home() {
             filteredCategories.map((category, catIdx) => {
               if (category.items.length === 0) return null;
               return (
-              <div key={catIdx} className="space-y-6">
+              <div key={catIdx} id={category.id} className="space-y-6 pt-6 -mt-6">
                 <div className="border-b border-gray-200 pb-3">
                   <h3 className="text-2xl font-bold text-gray-900">{category.title}</h3>
                   <p className="text-gray-500 mt-1">{category.desc}</p>

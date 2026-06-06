@@ -5,8 +5,13 @@ import { ReactNode, useState } from 'react';
 import { Logo } from './Logo';
 import { A11yControls } from './A11yControls';
 
+import { Building2, Banknote, ShieldPlus } from 'lucide-react';
+
 const navCategories = [
   {
+    id: "property",
+    shortTitle: "Property",
+    categoryIcon: Building2,
     title: "Property & Construction",
     items: [
       { path: '/rural-land', label: 'Rural Land Value', icon: Map },
@@ -18,6 +23,9 @@ const navCategories = [
     ]
   },
   {
+    id: "utilities",
+    shortTitle: "Utilities",
+    categoryIcon: Zap,
     title: "Energy & Utilities",
     items: [
       { path: '/energy-demand', label: 'Peak Energy Demand', icon: Zap },
@@ -29,6 +37,9 @@ const navCategories = [
     ]
   },
   {
+    id: "farm",
+    shortTitle: "Farm",
+    categoryIcon: PawPrint,
     title: "Animal & Farm",
     items: [
       { path: '/habitat-cost', label: 'Habitat Builder', icon: Leaf },
@@ -38,6 +49,9 @@ const navCategories = [
     ]
   },
   {
+    id: "business",
+    shortTitle: "Business",
+    categoryIcon: TrendingUp,
     title: "Business & Profit",
     items: [
       { path: '/cut-cost', label: 'Cut Cost', icon: Scissors },
@@ -46,6 +60,9 @@ const navCategories = [
     ]
   },
   {
+    id: "grants",
+    shortTitle: "Grants",
+    categoryIcon: Banknote,
     title: "Government Aid & Grants",
     items: [
       { path: '/grant-finder', label: 'Grant Finder', icon: Search },
@@ -152,9 +169,24 @@ export function Layout({ children }: { children: ReactNode }) {
                Rural Costs
             </Link>
           </div>
-          <h2 className="hidden md:block text-lg font-semibold text-gray-800">
-            {navItems.find(i => i.path === location.pathname)?.label || 'Dashboard'}
-          </h2>
+          
+          {/* Quick Categories instead of page title */}
+          <div className="hidden md:flex items-center gap-2 overflow-x-auto">
+            {navCategories.map(cat => {
+              const Icon = cat.categoryIcon;
+              return (
+                <Link 
+                  to={`/#${cat.id}`}
+                  key={cat.id} 
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 hover:bg-[#1a5f3f]/10 dark:bg-gray-800 dark:hover:bg-gray-700 text-slate-700 hover:text-[#1a5f3f] dark:text-gray-200 dark:hover:text-green-300 rounded-full text-sm font-medium transition-colors border border-transparent hover:border-[#1a5f3f]/20 dark:border-gray-700 dark:hover:border-green-500/50"
+                >
+                  <Icon className="w-4 h-4 shrink-0" />
+                  {cat.shortTitle}
+                </Link>
+              );
+            })}
+          </div>
+
           <div className="flex items-center gap-4">
             <A11yControls />
             <span className="text-xs text-gray-500 hidden sm:inline-block">Location Context: <span className="font-medium text-gray-800">USA</span></span>
