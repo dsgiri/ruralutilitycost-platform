@@ -4,6 +4,7 @@ import { cn } from '../lib/utils';
 import { ReactNode, useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { A11yControls } from './A11yControls';
+import { AdUnit } from './AdUnit';
 
 import { Building2, Banknote, ShieldPlus, Calculator, Truck } from 'lucide-react';
 
@@ -420,11 +421,11 @@ export function Layout({ children }: { children: ReactNode }) {
               </div>
             </div>
           </footer>
-        </div>
-        
-        {/* AD SPACE (ADSENSE OPTIMIZED) */}
-        <div className="h-16 bg-gray-200 flex-shrink-0 flex items-center justify-center border-t border-gray-300 print:hidden">
-          <span className="text-[10px] text-gray-400 tracking-[0.2em] uppercase">Advertisement</span>
+
+          {/* AD SPACE (ADSENSE OPTIMIZED) - Now scrolls with content */}
+          <div className="bg-white dark:bg-[#111827] border-t border-gray-200 dark:border-gray-800 print:hidden py-6">
+            <AdUnit slot="site-footer-ad" placement="end-of-content" className="!mb-0 !mt-0 border-t-0" />
+          </div>
         </div>
       </main>
 

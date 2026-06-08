@@ -65,6 +65,7 @@ import GrantReadiness from './features/calculators/GrantReadiness/GrantReadiness
 import Sources from './pages/Sources';
 import Credits from './pages/Credits';
 import Partners from './pages/Partners';
+import AdsDemo from './pages/AdsDemo';
 
 export default function App() {
   return (
@@ -130,6 +131,7 @@ export default function App() {
           <Route path="/sources" element={<Sources />} />
           <Route path="/credits" element={<Credits />} />
           <Route path="/partners" element={<Partners />} />
+          <Route path="/ads-demo" element={<AdsDemo />} />
         </Routes>
       </Layout>
       <CookieBanner />
