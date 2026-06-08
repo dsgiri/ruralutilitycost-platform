@@ -16,6 +16,12 @@ async function startServer() {
 
   app.use(express.json());
 
+  // Explicitly serve ads.txt to guarantee text/plain and no redirects
+  app.get('/ads.txt', (req, res) => {
+    res.type('text/plain');
+    res.send('google.com, pub-9785752001527360, DIRECT, f08c47fec0942fa0\ngoogle.com, pub-XXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0');
+  });
+
   // API routes FIRST
   app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' });
