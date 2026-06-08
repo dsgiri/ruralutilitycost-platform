@@ -391,6 +391,7 @@ export function Layout({ children }: { children: ReactNode }) {
               <div>
                 <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Organization</h3>
                 <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                  <li><Link to="/portfolio" className="hover:text-[#1a5f3f] dark:hover:text-[#6ee7b7] hover:underline font-medium">Platform Portfolio</Link></li>
                   <li><Link to="/about" className="hover:text-[#1a5f3f] dark:hover:text-[#6ee7b7] hover:underline font-medium">About Us</Link></li>
                   <li><Link to="/contact" className="hover:text-[#1a5f3f] dark:hover:text-[#6ee7b7] hover:underline font-medium">Contact</Link></li>
                   <li><Link to="/sources" className="hover:text-[#1a5f3f] dark:hover:text-[#6ee7b7] hover:underline font-medium">All Sources & Science</Link></li>
