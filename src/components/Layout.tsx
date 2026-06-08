@@ -408,12 +408,14 @@ export function Layout({ children }: { children: ReactNode }) {
               </div>
             </div>
             
-            <div className="max-w-7xl mx-auto pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
-              <div className="text-center md:text-left">
-                <p className="mb-1 font-semibold text-gray-700 dark:text-gray-300 text-sm">All calculator results are estimates only.</p>
-                <p>&copy; {new Date().getFullYear()} Rural Utility Cost. All rights reserved.</p>
+            <div className="max-w-7xl mx-auto pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-start gap-6 text-xs text-gray-500 dark:text-gray-400">
+              <div className="text-center md:text-left flex-1 lg:max-w-3xl">
+                <p className="mb-2 font-medium text-gray-500 dark:text-gray-400 text-[11px] leading-relaxed">
+                  <span className="font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Disclaimer:</span> These figures and calculator results are estimates based on standard assumptions, user inputs, and industry averages. This tool is provided for informational purposes only and does not replace professional financial, legal, engineering, or agricultural advice. We disclaim all liability for decisions, costs, losses, or damages arising from reliance on this data. Results may vary based on local conditions, methodology, and assumptions. Please consult qualified local professionals, licensed contractors, or certified advisors for guidance specific to your operation.
+                </p>
+                <p className="text-xs text-gray-400">&copy; {new Date().getFullYear()} Rural Utility Cost. All rights reserved.</p>
               </div>
-              <div className="flex items-center space-x-3 sm:space-x-4">
+              <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-4 flex-shrink-0 pt-2">
                 <Link to="/privacy-policy" className="hover:text-[#1a5f3f] dark:hover:text-[#6ee7b7] transition-colors">Privacy Policy</Link>
                 <span className="opacity-30">|</span>
                 <Link to="/terms-of-use" className="hover:text-[#1a5f3f] dark:hover:text-[#6ee7b7] transition-colors">Terms of Use</Link>
